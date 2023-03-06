@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="images/logo1.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FarmTrade</title>
+    <link rel="stylesheet" type="text/css"  href="styles/bootstrap-337.min.css" /></link>
+	<link rel="stylesheet" type="text/css"  href="styles/minsty.css" /></link>
+
+    <link rel="stylesheet" type="text/css"  href="font-awsome/css/font-awesome.min.css" /></link>
+<link rel="stylesheet" type="text/css"  href="styles/style.css" /></link>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: ;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 14px;
+}
+
+#myBtn:hover {
+  background-color: #6CAB36;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 350px;
+  height: 350px;
+  perspective: 1000px;
+  float:left ;
+ width: 33%;
+   padding-right: 30px;
+   
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+ 
+  color: black;
+  z-index: 2;
+}
+
+.flip-card-back {
+  background-color: #6CAB36;
+  color: white;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+<button onclick="topFunction()" id="myBtn" title="Go to top">^</button>
+<div id="topp-shadow"></div>
+<div id="topp">
+<div class="navvbar">
+  <a href="index2.php">Home</a>
+  
+  <div class="dropdowwn">
+    <button class="dropbtn">Buy 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdowwn-content">
+      <a href="prod2.php">manure/seeds</a>
+      <a href="veg.php">fruits/vegetables
+</a>
+    </div>
+  </div> <div class="dropdowwn">
+    <button class="dropbtn">Sell 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdowwn-content">
+      <a href="prod.php">product</a>
+      <a href="crop.php">Machine</a>
+    </div>
+  </div> 
+  <a href="ongoing2.html">Ongoing Prices</a>
+  <a href="tr2.php">Trader</a>
+  
+  <a href="logout.php">logout</a>
+
+
+</div><a href="index2.html">
+<img src="images/logo4.png" width="170" height="80" ALIGN="left" clear="left"> </a><center>
+</div>
+<br><br>
+<center>
+<div>
+
+  <img class="mySlides" src="images/dp/22.jpg" >
+  <img class="mySlides" src="images/dp/21.jpg" >
+  <img class="mySlides" src="images/dp/23.jpg" >
+  <img class="mySlides" src="images/dp/24.jpg" >
+  <img class="mySlides" src="images/dp/25.jpg" >
+  <img class="mySlides" src="images/dp/26.jpg" >
+  <img class="mySlides" src="images/dp/27.jpg" >
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000); // Change image seconds
+}
+</script>
+</center>
+<div id="contentt">
+   
+
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+ <div class="page-header" align="right">
+        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>&emsp;&emsp;&emsp;&emsp;</h1>
+    </div>
+    <p>
+        <div align="right">
+        <a href="logout.php" class="btn btnn-primary"><i class="fa fa-fw fa-sign-out"></i>Sign Out</a>
+		<a href="profile2.php" class="btn btnn-primary"><i class="fa fa-fw fa-user"></i>profile</a>
+    &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;</p></div>
+<!-- the farmer box-->
+<H1>&emsp;&emsp;&emsp;&emsp; TOP FARMER</H1><br>
+<hr>
+
+<div class="flip-card" >
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img  src="images/far/index1.jpg" alt="Avatar" style="width:250px;height:250px;" >
+    </div>
+    <div class="flip-card-back">
+      <h1>Rama</h1> 
+      <p>farmer</p> 
+      <p>onion</p>
+    </div>
+  </div>
+  
+</div>
+
+<div class="flip-card" >
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img  src="images/far/index11.jpg" alt="Avatar" style="width:250px;height:250px;" >
+    </div>
+    <div class="flip-card-back">
+      <h1>Jack</h1> 
+      <p>farmer</p> 
+      <p>onion</p>
+    </div>
+  </div>
+  
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img  src="images/far/11.jpg" alt="Avatar" style="width:250px;height:250px;" >
+    </div>
+    <div class="flip-card-back">
+      <h1>Gadappa</h1> 
+      <p>farmer</p> 
+      <p>onion</p>
+    </div>
+  </div>
+
+
+ 
+        
+       
+</div> </Div><!-- the trader box-->
+<div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<H1>&emsp;&emsp;&emsp;&emsp;TOP TRADER</H1><br><br>
+<hr>
+
+
+<div class="flip-card" >
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img  src="images/far/22.jpg" alt="Avatar" style="width:250px;height:250px;" >
+    </div>
+    <div class="flip-card-back">
+      <h1>Kiran</h1> 
+      <p>Mysore</p> 
+      <p></p>
+    </div>
+  </div>
+  
+</div>
+
+<div class="flip-card" >
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img  src="images/far/21.jpg" alt="Avatar" style="width:250px;height:250px;" >
+    </div>
+    <div class="flip-card-back">
+      <h1>Harish</h1> 
+      <p>Kolar</p> 
+      <p></p>
+    </div>
+  </div>
+  
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img  src="images/far/23.jpg" alt="Avatar" style="width:250px;height:250px;" >
+    </div>
+    <div class="flip-card-back">
+      <h1>Krishna</h1> 
+      <p>Ramnagar</p> 
+      <p></p>
+    </div>
+  </div>
+  </div>
+<!--NEWS--><p><br>
+<H1>&emsp;&emsp;&emsp;&emsp;NEWS</H1>
+ </p><hr>
+ <center>
+<button class="accordion">Two Farmers Dump Onion Produce As Prices Fell In Nashik</button>
+<div class="panel">
+  <p>A Protest Was Held By Two Farmers In Maharashtra’s Satna District. They Threw Onlions on Road For Not Getting Good Price For Their Produce. The Protest Was Against Steep Fall in The Wholesale Price of Onions. The two farmers, Ravindra Birari and Prashant Mahajan took the extreme step after they were offered a merger amount of Rs 1.5 Per Kg for their onions, while the actual production cost of the crop was Rs 9 per Kg.</p>
+</div>
+
+<button class="accordion">Will Farmers Vote as One Bloc? The Question That Will Dictate 2019 Battle Plans</button>
+<div class="panel">
+  <p>Experts suggest that it will likely depend on an interplay of agricultural factors, market forces and state policy</p>
+</div>
+
+<button class="accordion">Karnataka Assembly Winter Session Set for Bumpy Start Over Farmers’ Protest, Attempts to Poach MLAs</button>
+<div class="panel">
+  <p>This impasse between the ruling government and farmers, especially sugarcane growers, from the northern district of Belagavi has been brewing over months.</p>
+</div>
+<button class="accordion">Maharashtra Farmer Earns 20 Paise a Kg for Brinjal Crop, Destroys Plantation in Despair</button>
+<div class="panel">
+  <p>Frustrated with the low income, the distraught farmer uprooted all brinjal plants from his field and threw them away on Sunday.</p>
+</div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+<br><br><br><br><br><br><br><br>
+
+
+  
+  <div id="footer">
+  <div class="container">
+  <hr>
+  <p><h3>Created by<h3>
+  
+ <h4> Sagar U :1640145<br>
+  Manoj V :1640109<br>
+  Muralidharan R :1640144</p>
+            <h4>Contact us </h4>
+            <center>
+            <p class="social">
+            <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-google-plus"></a>
+                <a href="#" class="fa fa-envelope"></a>
+            
+            
+            
+             farmtrade@gmail.com 
+            
+    </div>
+        
+        
+        
+        
+    </div>
+    </div>	
+</div>
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+</body>
+</html>

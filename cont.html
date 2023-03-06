@@ -1,0 +1,227 @@
+<?php
+//Initialize the session
+session_start();
+ 
+ //Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
+?>
+<?php
+require_once("connection.php");
+
+
+		
+
+		
+
+		if(isset($_POST['submitform']))
+		{
+			$dir="upload/";
+			$image=$_FILES['uploadfile']['name'];
+			$temp_name=$_FILES['uploadfile']['tmp_name'];
+             $username=$_Get['username'];
+			
+			 $userid=$_GET["username"];
+			 
+			$userid=$_POST["userid"];
+			
+			$adrs=$_POST['adrs'];
+			
+             $cropname=$_POST["cropname"];
+			$details=$_POST["details"];
+			if($image!="")
+			{
+				if(file_exists($dir.$image))
+				{
+					$image= time().'_'.$image;
+				}
+
+				$fdir= $dir.$image;
+				move_uploaded_file($temp_name, $fdir);
+			}
+
+			   
+				$query="insert IGNORE into crop (userid,cropname,image,details,adrs) values ('$userid','$cropname','$image','$details','$adrs')";
+				mysqli_query($con,$query) or die(mysqli_error($con));
+				
+				
+                // Redirect to login page
+                header("location: crop.php");
+						
+
+		}
+
+?>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="images/logo1.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FarmTrade</title>
+    <link rel="stylesheet" type="text/css"  href="styles/bootstrap-337.min.css" /></link>
+	<link rel="stylesheet" type="text/css"  href="styles/minsty.css" /></link>
+
+    <link rel="stylesheet" type="text/css"  href="font-awsome/css/font-awesome.min.css" /></link>
+<link rel="stylesheet" type="text/css"  href="styles/style.css" /></link>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div id="topp-shadow"></div>
+<div id="topp">
+<div class="navvbar">
+
+  <a href="index2.php">Home</a>
+  
+  <div class="dropdowwn">
+    <button class="dropbtn">Buy 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdowwn-content">
+      <a href="prod2.php">manure/seeds</a>
+      <a href="veg.php">fruits/vegetables
+</a>
+    </div>
+  </div> <div class="dropdowwn">
+    <button class="dropbtn">Sell 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdowwn-content">
+      <a href="prod.php">product</a>
+      <a href="crop.php">Machine</a>
+    </div>
+  </div> 
+  <a href="ongoing2.html">Ongoing Prices</a>
+  <a href="tr2.php">Trader</a>
+  
+  <a href="logout.php">logout</a>
+
+
+</div>
+</div></div>
+
+
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #6CAB36;
+  overflow-x: hidden;
+  padding-top: 20px;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #f1f1f1;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+
+.main {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<br><br><br><br>
+  &emsp;&emsp;&emsp;&emsp;
+<div class="sidenav" style="display:none" id="mySidenav">
+<button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()"><br><br><br>Close &times;</button>
+  <a href="profile2.php"><i class="fa fa-fw fa-user"></i> Profile</a><br>
+ 
+  <a href="rtr.php"><i class="fa fa-fw fa-registered"></i> Register as Trader</a><br>
+  <a href="his1.php"><i class="fa fa-fw fa-history"></i> History</a><br>
+  
+  <a href="cont.html"><i class="fa fa-fw fa-address-book"></i> Contact</a>
+</div></div>
+
+
+<div id="main">
+
+<div class="w3-teal">
+  <button id="openNav"  onclick="w3_open()">&#9776;</button>
+  <div class="w3-container">
+    <center>
+  <p><h1>Created by</h1>
+  
+ <h3> Sagar U :1640145<br>
+  Manoj V :1640109<br>
+  Muralidharan R :1640144</h3></p>
+  <br><br><br>
+            <h2>Contact us </h2>
+            <center>
+           <h1> <p class="social">
+            <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-google-plus"></a>
+                <a href="#" class="fa fa-envelope"></a>
+            
+            <br>
+            
+             farmtrade@gmail.com </h1>
+            
+    </div>
+        
+        
+        
+        
+    </div>
+    </div>	
+</div>
+	
+	
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "26%";
+  document.getElementById("mySidenav").style.width = "25%";
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidenav").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<link rel="stylesheet" type="text/css"  href="styles/minsty.css" /></link>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #6CAB36;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 30px;
+  border:1px solid #ddd;
+  border-radius: 10px;
+}
+.column img{
+border-radius: 10px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the buttons */
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the buttons */
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #666;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color:#6CAB36;
+  color: white;
+}
+.btn.atv {
+  background-color:#6CAB36;
+  color: white;
+  padding: 12px 16px;
+}
+.btn.atv:hover {
+  background-color: #666;
+}
+
+</style>
+</head>
+<body>
+<div id="topp-shadow"></div>
+<div id="topp">
+<div class="navvbar">
+  <a href="index.html">Home</a>
+  
+  <div class="dropdowwn">
+    <button class="dropbtn">Buy 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdowwn-content">
+      <a href="dis.php">manure/seeds
+</a>
+      <a href="farpg.html">fruits/vegetables
+</a>
+    </div>
+ <!-- </div> <div class="dropdowwn">
+    <button class="dropbtn">Sell 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdowwn-content">
+      <a href="#">product</a>
+      <a href="#">Machine</a>
+    </div>-->
+  </div> 
+  <a href="ongoing.html">Ongoing Prices</a>
+  <a href="#home">Trader</a>
+  <a href="regst.php">Register</a>
+  <a href="login.php">login</a>
+
+<form align="right">
+  <input type="text" name="searchh" placeholder="Search..">
+</form>
+</div></div>
+<br><br><a href="index.html">
+<img src="images/logo3.jpg" width="170" height="80" ALIGN="left" clear="left"> <center>
+
+</a>
+
+<br><br><br><br><br><br><br><br><br><br>
+<div id="btnContainer">
+  
+  
+  <button class="btn" onclick="listView()"><i class="fa fa-bars"></i> List</button> 
+<button class="btn active" onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>
+</div>
+<br>
+
+<div class="row">
+  <div class="column" style="background-color:;">
+   <img src="images/far/index1.jpg"  align="left" clear="left" width="250" height="250">
+    <h1>&emsp;Muthu</h1>
+	 <h2>&emsp;Bengaluru</h2>
+  <button class="btn atv" onclick="myFunction1()"	>Contact </button> 
+
+
+<p id="demo1"></p>
+  </div>
+ 
+  <div class="column" style="background-color:;">
+    <img src="images/far/index11.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Vikram</h1>
+	<h2>&emsp;Chennai</h2>
+	<h3>&emsp;Onion</h3>
+   <button class="btn atv" onclick="myFunction2()"	>Contact </button> 
+   <p id="demo2"></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:;">
+   <img src="images/far/11.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Marappa</h1>
+	<h2>&emsp;Mulbagal</h2>
+	<h3>&emsp;carrot</h3>
+  <button class="btn atv" onclick="myFunction3()"	>Contact </button> 
+ 	
+	<p id="demo3"></p>
+  </div>
+  
+  <div class="column" style="background-color:;">
+    <img src="images/far/index1.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Manoj</h1>
+	<h2>&emsp;Hosur</h2>
+	<h3>&emsp;Brinjal</h3>
+   <button class="btn atv" onclick="myFunction4()"	>Contact </button> 
+   <p id="demo4"></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:;">
+   <img src="images/far/index11.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Harshit</h1>
+	<h2>&emsp;Hassan</h2>
+	<h3>&emsp;Tomato</h3>
+   <button class="btn atv" onclick="myFunction5()"	>Contact </button> 
+   <p id="demo5"></p>
+  </div>
+  <div class="column" style="background-color:;">
+    <img src="images/far/11.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;CJ</h1>
+	<h2>&emsp;ooty</h2>
+	<h3>&emsp;coffee beans</h3>
+   <button class="btn atv" onclick="myFunction6()"	>Contact </button> 
+   <p id="demo6"></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:;">
+   <img src="images/far/index1.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Naren</h1>
+	<h2>&emsp;Pondicherry</h2>
+	<h3>&emsp;Podalanga</h3>
+   <button class="btn atv" onclick="myFunction7()"	>Contact </button> 
+   <p id="demo7"></p>
+  </div>
+  <div class="column" style="background-color:;">
+    <img src="images/far/index11.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Sagar</h1>
+	<h2>&emsp;Bangalore</h2>
+	<h3>&emsp;Drumstick</h3>
+   <button class="btn atv" onclick="myFunction8()"	>Contact </button> 
+   <p id="demo8"></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:;">
+   <img src="images/far/11.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Pinto</h1>
+	<h2>&emsp;Chennai</h2>
+	<h3>&emsp;grapes</h3>
+   <button class="btn atv" onclick="myFunction9()"	>Contact </button>
+<p id="demo9"></p>   
+  </div>
+  <div class="column" style="background-color:;">
+    <img src="images/far/index1.jpg"  align="left" clear="left" width="250" height="250">
+     <h1>&emsp;Hazle</h1>
+	<h2>&emsp;Trichy</h2>
+	<h3>&emsp;Onion</h3>
+   <button class="btn atv" onclick="myFunction10()"	>Contact </button> 
+   <p id="demo10"></p>
+  </div>
+</div>
+<br><br>
+<div class="pagination">
+  <a href="#">&laquo;</a>
+  <a href="farpg.html"class="active">1</a>
+  <a href="#" >2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#">6</a>
+  <a href="#">&raquo;</a>
+</div>
+<br><br>
+<script>
+// Get the elements with class="column"
+var elements = document.getElementsByClassName("column");
+
+// Declare a loop variable
+var i;
+
+// List View
+function listView() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.width = "100%";
+	
+  }
+}
+
+// Grid View
+function gridView() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.width = "50%";
+  }
+}
+
+/* Optional: Add active class to the current button (highlight it) */
+var container = document.getElementById("btnContainer");
+var btns = container.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+<script>
+function myFunction1() {
+  document.getElementById("demo1").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+
+function myFunction2() {
+  document.getElementById("demo2").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction3() {
+  document.getElementById("demo3").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction4() {
+  document.getElementById("demo4").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction5() {
+  document.getElementById("demo5").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction6() {
+  document.getElementById("demo6").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction7() {
+  document.getElementById("demo7").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction8() {
+  document.getElementById("demo8").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction9() {
+  document.getElementById("demo9").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+function myFunction10() {
+  document.getElementById("demo10").innerHTML = "Contact Number:987654321 <br> Address:";
+}
+</script>
+
+</body>
+</html>
